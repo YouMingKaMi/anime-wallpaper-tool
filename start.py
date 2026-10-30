@@ -13,6 +13,11 @@ import urllib.request
 import venv
 import zipfile
 
+for stream in (sys.stdout, sys.stderr):
+    if hasattr(stream, 'reconfigure'):
+        stream.reconfigure(encoding='utf-8', errors='replace')
+os.environ.setdefault('PYTHONUTF8', '1')
+
 ROOT = Path(__file__).resolve().parent
 RELEASE = 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/'
 MODEL_FILES = {'realesrgan-x4plus-anime.bin', 'realesrgan-x4plus-anime.param'}

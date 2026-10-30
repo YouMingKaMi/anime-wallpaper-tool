@@ -21,6 +21,10 @@ from urllib.parse import urlsplit
 import urllib.request
 import webbrowser
 
+for stream in (sys.stdout, sys.stderr):
+    if hasattr(stream, 'reconfigure'):
+        stream.reconfigure(encoding='utf-8', errors='replace')
+
 ROOT = Path(__file__).resolve().parent.parent
 ENGINE = ROOT / 'local' / 'engine' / ('realesrgan-ncnn-vulkan.exe' if os.name == 'nt' else 'realesrgan-ncnn-vulkan')
 MODELS = ENGINE.parent / 'models'
