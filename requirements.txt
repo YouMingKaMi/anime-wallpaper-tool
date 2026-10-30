@@ -1,0 +1,2 @@
+# Only required for native 4K output on Windows and Linux.
+Pillow>=11.3,<14
